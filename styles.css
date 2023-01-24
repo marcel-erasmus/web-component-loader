@@ -1,0 +1,99 @@
+:root {
+    --loader-size: 100px;
+    --loader-color-head: #a25353;
+    --loader-color-tail: #9f6e6e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000000;
+}
+
+.container-loader {
+    position: relative;
+    width: 100%;
+    height: var(--loader-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-box-reflect: below 0 linear-gradient(transparent, transparent, #000010);
+}
+
+.container-loader .loader {
+    position: absolute;
+    width: var(--loader-size);
+    height: var(--loader-size);
+    border-radius: 50%;
+    animation: loader-animation 2s linear infinite;
+}
+
+.container-loader .loader:nth-child(1):before,
+.container-loader .loader:nth-child(2):before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to top, transparent, var(--loader-color-head));
+    background-size: calc(var(--loader-size) / 2) calc(var(--loader-size) - calc(--loader-size) * 0.1);
+    background-repeat: no-repeat;
+    border-top-left-radius: calc(var(--loader-size) / 2);
+    border-bottom-left-radius: calc(var(--loader-size) / 2);
+}
+
+.container-loader .loader:nth-child(2),
+.container-loader .loader:nth-child(4) {
+    animation-delay: -1s;
+    filter: hue-rotate(250deg);
+}
+
+.container-loader .loader i {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 100;
+    transform: translateX(-50%);
+    width: calc(var(--loader-size) * 0.1);
+    height: calc(var(--loader-size) * 0.1);
+    background: var(--loader-color-head);
+    border-radius: 50%;
+    box-shadow:
+        0 0 10px var(--loader-color-head),
+        0 0 20px var(--loader-color-head),
+        0 0 30px var(--loader-color-head),
+        0 0 40px var(--loader-color-head),
+        0 0 50px var(--loader-color-head),
+        0 0 60px var(--loader-color-head),
+        0 0 70px var(--loader-color-head),
+        0 0 80px var(--loader-color-head),
+        0 0 90px var(--loader-color-head),
+        0 0 100px var(--loader-color-head);
+}
+
+.container-loader .loader span {
+    position: absolute;
+    z-index: 1;
+    inset: calc(var(--loader-size) * 0.1);
+    background: #000000;
+    border-radius: 50%;
+}
+
+@keyframes loader-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
