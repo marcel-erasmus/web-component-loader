@@ -19,12 +19,12 @@ body {
 }
 
 .container-loader {
-    position: relative;
-    width: 100%;
-    height: var(--loader-size);
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    width: 100%;
+    height: var(--loader-size);
     -webkit-box-reflect: below 0 linear-gradient(transparent, transparent, #000010);
 }
 
@@ -95,5 +95,15 @@ body {
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container-loader {
+        display: none;
+    }
+
+    #loader {
+        display: flex;
     }
 }
